@@ -106,13 +106,26 @@ public class UserRegistrationTest {
         Assert.assertTrue(result);
     }
 
+
     @Test
-    public void givenPassword_WhenNotProper_ShouldReturnTrue() {
+    public void givenPassword_WhenLessThanEightCharacter_ShouldReturnFalse() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
         boolean result = userValidate.validatePassword("theks");
         Assert.assertFalse(result);
     }
 
+    @Test
+    public void givenPassword_WhenNumbersNotPresent_ShouldReturnFalse() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validatePassword("Thesdsatta");
+        Assert.assertFalse(result);
+    }
 
+    @Test
+    public void givenPassword_WhenSpecialCharacterAbsent_ShouldReturnFalse() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validatePassword("Thes12datta");
+        Assert.assertFalse(result);
+    }
 
 }
