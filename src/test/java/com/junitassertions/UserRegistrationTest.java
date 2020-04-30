@@ -79,9 +79,23 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenMobile_WhenNotProper_ShouldReturnTrue() {
+    public void givenMobile_WhenLessThanTenNumbers_ShouldReturnFalse() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
         boolean result = userValidate.validateMobile("77030");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenMobile_WhenOnlyNumbersPresent_ShouldReturnTrue() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateMobile("8149277030");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenMobile_WhenSpaceNotAvailable_BetweenContryCodeAndMobileNumber_ShouldReturnFalse() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateMobile("918149277030");
         Assert.assertFalse(result);
     }
 
