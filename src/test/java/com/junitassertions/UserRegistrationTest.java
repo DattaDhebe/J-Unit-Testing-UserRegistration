@@ -10,17 +10,30 @@ public class UserRegistrationTest {
     @Test
     public void givenName_WhenProper_ShouldReturnTrue() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
-        boolean result = userValidate.validateFirstName("Datta");
+        boolean result = userValidate.validateName("Datta");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenName_WhenLessThanThreeCharacter_ShouldReturnFalse() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
-        boolean result = userValidate.validateFirstName("da");
+        boolean result = userValidate.validateName("da");
         Assert.assertFalse(result);
     }
 
+    @Test
+    public void givenName_WhenNumbers_ArePresent_ShouldReturnFalse() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateName("Dag2635");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenName_WhenDoesNotCantainsFirstLetterCapital_ShouldReturnFalse() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateName("datta");
+        Assert.assertFalse(result);
+    }
 
 
     @Test
