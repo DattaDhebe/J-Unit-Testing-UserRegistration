@@ -51,6 +51,27 @@ public class UserRegistrationTest {
     }
 
     @Test
+    public void givenEmail_WhenAddedDotBeforeAtTheRate_ShouldReturnTrue() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateEmail("abc.@gmail.com");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void givenEmail_WhenAddedCharactersAfterAtTheRate_ShouldReturnTrue() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateEmail("abc.xyz@gmail.com");
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void givenEmail_WhenAddedManyDotAfterAtTheRate_ShouldReturnTrue() {
+        UserRegistrationValidation userValidate = new UserRegistrationValidation();
+        boolean result = userValidate.validateEmail("abc@gmail.com.co.in");
+        Assert.assertFalse(result);
+    }
+
+    @Test
     public void givenMobile_WhenProper_ShouldReturnTrue() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
         boolean result = userValidate.validateMobile("91 8149277030");
