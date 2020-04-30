@@ -8,32 +8,20 @@ import org.junit.Test;
 public class UserRegistrationTest {
 
     @Test
-    public void givenFirstName_WhenProper_ShouldReturnTrue() {
+    public void givenName_WhenProper_ShouldReturnTrue() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
         boolean result = userValidate.validateFirstName("Datta");
         Assert.assertTrue(result);
     }
 
     @Test
-    public void givenFirstName_WhenNotProper_ShouldReturnFlase() {
+    public void givenName_WhenLessThanThreeCharacter_ShouldReturnFalse() {
         UserRegistrationValidation userValidate = new UserRegistrationValidation();
         boolean result = userValidate.validateFirstName("da");
         Assert.assertFalse(result);
     }
 
-    @Test
-    public void givenLastName_WhenProper_ShouldReturnTrue() {
-        UserRegistrationValidation userValidate = new UserRegistrationValidation();
-        boolean result = userValidate.validateLastName("Dhebe");
-        Assert.assertTrue(result);
-    }
 
-    @Test
-    public void givenLastName_WhenNotProper_ShouldReturnTrue() {
-        UserRegistrationValidation userValidate = new UserRegistrationValidation();
-        boolean result = userValidate.validateLastName("dh");
-        Assert.assertFalse(result);
-    }
 
     @Test
     public void givenEmail_WhenProper_ShouldReturnTrue() {
